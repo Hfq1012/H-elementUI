@@ -41,6 +41,7 @@
 			position: fixed;
 			width: 100%;
 			height: 50px;
+			z-index: 100;
 			.header_l {
 				background-color: #3a3f51;
 				width: 200px;
@@ -67,6 +68,7 @@
 				margin-left: 200px;
 				background-color: $white;
 				line-height: 50px;
+				box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
 				.header_d1 {
 					float: left;
 					.sidecoll {
@@ -74,6 +76,10 @@
 						height: 50px;
 						line-height: 56px;
 						margin-left: 16px;
+					}
+					.breadcrumb {
+						float: left;
+						margin: 18px 0 0 20px;
 					}
 				}
 				.header_d2 {
@@ -166,4 +172,15 @@
 			margin-left: 64px !important;
 		}
 	}
+}
+
+.notificatBar {
+	position: fixed;
+	height: calc(100% - 50px);
+	bottom: 0;
+	right: 0;
+	width: 360px;
+	box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.2);
+	background-color: $white;
+	z-index: 99;
 }
