@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+//顶部进度条
+import NProgress from 'nprogress'
+process.env.NODE_ENV === 'development' && import ('nprogress/nprogress.css')
 
 Vue.use(Router)
 import Layout from '../layout'
@@ -10,12 +13,12 @@ export const currencyRoutes = [
 		path: '/',
 		name: 'Home',
 		component: Layout,
-		redirect: '/dashboard',
+		redirect: '/homePage',
 		children: [
 			{
-				path: 'dashboard',
-				name: 'Dashboard',
-				component: () => import('views/dashboard'),
+				path: 'homePage',
+				name: 'HomePage',
+				component: () => import('views/homePage'),
 				meta: {
 					title: '首页',
 					icon: 'el-icon-s-data'
@@ -41,46 +44,40 @@ export const currencyRoutes = [
 		]
 	},
 	{
-		path: '/driver',
-		name: 'Driver',
+		path: '/userManager',
+		name: 'UserManager',
 		component: Layout,
-		redirect: '/driver/index',
+		redirect: '/userManager/index',
 		children: [
 			{
 				path: 'index',
-				name: 'Driver-index',
-				component: () => import('views/driver-page'),
+				name: 'UserManager-index',
+				component: () => import('views/userManager'),
 				meta: {
-					title: '引导指南',
-					icon: 'el-icon-s-flag'
+					title: '用户管理',
+					icon: 'el-icon-user-solid'
 				}
 			}
 		]
 	},
   {
-    path: '/echarts',
-    component: Layout,
-    name: 'Echarts',
-    redirect: '/echarts/slide-chart',
-    meta: { icon: 'el-icon-s-marketing', title: 'Echarts' },
+    path: '/fundManage',
+    name: 'FundManage',
+		component: Layout,
+    redirect: '/fundManage/fundList',
+    meta: { icon: 'el-icon-s-shop', title: '资金管理' },
     children: [
       {
-        path: 'slide-chart',
-        name: 'Sldie-chart',
-        component: () => import('@/views/echarts/slide-chart'),
-        meta: { title: '滑动charts' }
+        path: 'fundList',
+        name: 'FundList',
+        component: () => import('@/views/fundManage/fundList'),
+        meta: { title: '资金流水' }
       },
       {
-        path: 'dynamic-chart',
-        name: 'Dynamic-chart',
-        component: () => import('@/views/echarts/dynamic-chart'),
-        meta: { title: '切换charts' }
-      },
-      {
-        path: 'map-chart',
-        name: 'Map-chart',
-        component: () => import('@/views/echarts/map-chart'),
-        meta: { title: 'map' }
+        path: 'chinaTabsList',
+        name: 'ChinaTabsList',
+        component: () => import('@/views/fundManage/chinaTabsList'),
+        meta: { title: '区域投资' }
       }
     ]
   }
@@ -88,6 +85,7 @@ export const currencyRoutes = [
 
 const createRouter = () => {
 	return new Router({
+		mode: 'history',
 		routes: currencyRoutes,
 		scrollBehavior() {
 			return {
@@ -99,5 +97,14 @@ const createRouter = () => {
 }
 
 const router = createRouter()
+
+router.beforeEach((to, from, next) => {
+	NProgress.start()
+	next()
+})
+
+router.afterEach(() => {
+	NProgress.done()
+})
 
 export default router

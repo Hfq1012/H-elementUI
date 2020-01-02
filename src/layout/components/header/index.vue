@@ -21,6 +21,9 @@
             <full-screen/>
           </li>
           <li>
+            <change-lang/>
+          </li>
+          <li>
             <user-dropdown/>
           </li>
         </ul>
@@ -33,12 +36,14 @@
   import SideCollapse from '@/components/sideCollapse'
   import BreadCrumb from '@/components/breadCrumb'
   import FullScreen from '@/components/fullScreen'
+  import ChangeLang from '@/components/changeLang'
   import UserDropdown from '@/components/userDropdown'
   export default {
     components: {
       SideCollapse,
       BreadCrumb,
       FullScreen,
+      ChangeLang,
       UserDropdown
     },
     methods: {

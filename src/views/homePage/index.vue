@@ -1,6 +1,8 @@
 <template>
-  <div>
-    dashboard
+  <div class="home">
+    <div class="aa">
+      kdaqujshgrfkjah
+    </div>
   </div>
 </template>
 

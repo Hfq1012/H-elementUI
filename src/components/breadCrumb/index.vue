@@ -30,7 +30,7 @@
 							return true
 						}
 					})
-					if(allList[0].path !== '/' && allList[0].path !== '/dashboard') {
+					if(allList[0].path !== '/' && allList[0].path !== '/homePage') {
 						allList.unshift({ path: '/', meta: { title: '首页'} })
 					}
 					this.breadList = allList
