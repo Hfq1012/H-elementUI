@@ -11,30 +11,30 @@
           :collapse-transition="false"
           :collapse="opened"
       >
-        <side-bar-item
+        <sidebar-item
             v-for="item in currencyRoutes"
             :key="item.path"
             :item="item"
             :basePath="item.path"
-        ></side-bar-item>
+        ></sidebar-item>
       </el-menu>
     </el-scrollbar>
   </div>
 </template>
 
 <script>
-  import sideBarItem from "./sideBarItem";
+  import SidebarItem from "./sideBarItem";
   import {mapGetters} from 'vuex';
   import {currencyRoutes} from '@/router';
 
   export default {
     components: {
-      sideBarItem
+      SidebarItem
     },
 		computed: {
-      ...mapGetters(['opened']),
+      ...mapGetters(['routes','opened']),
       currencyRoutes() {
-        return currencyRoutes
+        return currencyRoutes;
       },
 			activeMenu() {
 				return this.$route.path

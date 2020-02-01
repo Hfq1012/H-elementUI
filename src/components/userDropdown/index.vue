@@ -13,7 +13,7 @@
 					<router-link to="/personal"><i class="el-icon-s-custom"></i>{{ $t('com.personal') }}</router-link>
 				</el-dropdown-item>
 				<el-dropdown-item divided>
-					<a><i class="el-icon-switch-button">  {{ $t('com.quit') }}</i></a>
+					<a @click="_loginOut()"><i class="el-icon-switch-button">  {{ $t('com.quit') }}</i></a>
 				</el-dropdown-item>
 			</el-dropdown-menu>
 		</el-dropdown>
@@ -22,6 +22,10 @@
 
 <script>
 export default {
-
+	methods: {
+		_loginOut() {
+			this.$store.dispatch('user/loginOut')
+		}
+	}
 }
 </script>

@@ -25,16 +25,5 @@ module.exports = {
       warning: false,
       error: true
     }
-    // ,
-    // proxy: {
-    //   [process.env.VUE_APP_BASE_API]: {
-    //     target: process.env.VUE_APP_BASE_API,
-    //     changeOrigin: true,
-    //     secure: false,
-    //     pathRewrite: {
-    //       ['^' + process.env.VUE_APP_BASE_API]: ''
-    //     }
-    //   }
-    // }
   }
 }
