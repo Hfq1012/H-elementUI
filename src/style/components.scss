@@ -1,0 +1,163 @@
+.plugins-tips {
+  padding: 16px;
+  font-size: 14px;
+  background-color: #eef1f6;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  a {
+    color: red;
+  }
+}
+
+// 拖拽列表
+.drag-box{
+  display: flex;
+  user-select: none;
+}
+.drag-box-item {
+  flex: 1;
+  max-width: 330px;
+  min-width: 300px;
+  background-color: #eff1f5;
+  margin-right: 16px;
+  border-radius: 6px;
+  border: 1px #e1e4e8 solid;
+}
+.item-title{
+  padding: 8px 8px 8px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #24292e;
+  font-weight: 600;
+}
+.item-ul{
+  padding: 0 8px 8px;
+  height: 500px;
+  overflow-y: scroll;
+}
+.item-ul::-webkit-scrollbar{
+  width: 0;
+}
+.drag-list {
+  border: 1px #e1e4e8 solid;
+  padding: 10px;
+  margin: 5px 0 10px;
+  list-style: none;
+  background-color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  -webkit-transition: border .3s ease-in;
+  transition: border .3s ease-in;
+}
+.drag-list:hover {
+  border: 1px solid #20a0ff;
+}
+.ghost-style{
+  display: block;
+  color: transparent;
+  border-style: dashed
+}
+
+// 组织树结构
+.zoom-box {
+  position: fixed;
+  right: 30px;
+  bottom: 90px;
+  z-index: 2;
+}
+.org-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// 文件上传
+.pure-button {
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.g-core-image-corp-container .info-aside {
+  height: 45px;
+}
+
+.el-upload--text {
+  background-color: #fff;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 360px;
+  height: 180px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.el-upload--text .el-icon-upload {
+  font-size: 67px;
+  color: #97a8be;
+  margin: 40px 0 16px;
+  line-height: 50px;
+}
+
+.el-upload--text {
+  color: #97a8be;
+  font-size: 14px;
+  text-align: center;
+}
+
+.el-upload--text em {
+  font-style: normal;
+}
+.content-title {
+  font-weight: 400;
+  line-height: 50px;
+  margin: 10px 0;
+  font-size: 22px;
+  color: #1f2f3d;
+}
+.pre-img {
+  width: 100px;
+  height: 100px;
+  background: #f8f8f8;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+.crop-demo {
+  display: flex;
+  align-items: flex-end;
+}
+.crop-demo-btn {
+  position: relative;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  margin-left: 30px;
+  background-color: #409eff;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.crop-input {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+// 表格
+.wh {
+  width: 180px;
+}

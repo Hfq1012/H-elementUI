@@ -1,12 +1,25 @@
 import axios from 'axios'
 import Vue from 'vue'
 import store from '@/store'
-import router from '@/router'
-import {Loading, Message} from 'element-ui'
+// import router from '@/router'
+import {Loading} from 'element-ui'
 import Qs from 'qs'
 
+const baseUrl = process.env.NODE_ENV === 'development' ? 'https://www.easy-mock.com/mock/5add9213ce4d0e69998a6f51/iview-admin/' : 'https://produce.com'
+
+const addErrorLog = errorInfo => {
+  const { statusText, status, request: { responseURL } } = errorInfo
+  let info = {
+    type: 'ajax',
+    code: status,
+    mes: statusText,
+    url: responseURL
+  }
+  if (!responseURL.includes('save_error_logger')) store.dispatch('addErrorLog', info)
+}
+
 const $axios = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: baseUrl,
   tiomout: 3000
 })
 
@@ -42,34 +55,43 @@ $axios.interceptors.response.use(
     }
   },
   error => {
+    let errorInfo = error.response
     if (loading) {
       loading.close()
     }
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          // 返回401 清除token信息并跳转到登陆页面
-          store.commit('DEL_TOKEN')
-          router.replace({
-            path: '/login',
-            query: {
-              redirect: router.currencyRoutes.fullPath
-            }
-          })
-          break
-        case 404:
-          Message.error('网络请求不存在')
-          break
-        default:
-          Message.error(error.response.data.message)
+    if (!errorInfo) {
+      // switch (error.response.status) {
+      //   case 401:
+      //     // 返回401 清除token信息并跳转到登陆页面
+      //     store.commit('DEL_TOKEN')
+      //     router.replace({
+      //       path: '/login',
+      //       query: {
+      //         redirect: router.currencyRoutes.fullPath
+      //       }
+      //     })
+      //     break
+      //   case 404:
+      //     Message.error('网络请求不存在')
+      //     break
+      //   default:
+      //     Message.error(error.response.data.message)
+      // }
+      
+      const { request: { statusText, status }, config } = JSON.parse(JSON.stringify(error))
+      errorInfo = {
+        statusText,
+        status,
+        request: { responseURL: config.url }
       }
     } else {
-      // 请求超时或者网络有问题
-      if (error.message.includes('timeout')) {
-        Message.error('请求超时！请检查网络是否正常')
-      } else {
-        Message.error('请求失败，请检查网络是否已连接')
-      }
+      // // 请求超时或者网络有问题
+      // if (error.message.includes('timeout')) {
+      //   Message.error('请求超时！请检查网络是否正常')
+      // } else {
+      //   Message.error('请求失败，请检查网络是否已连接')
+      // }
+      addErrorLog(errorInfo)
     }
     return Promise.reject(error)
   }

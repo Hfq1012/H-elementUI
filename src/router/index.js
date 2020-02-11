@@ -87,23 +87,59 @@ export const currencyRoutes = [
 		]
 	},
 	{
-		path: '/fundManage',
-		name: 'FundManage',
+		path: '/components',
+		name: 'Components',
 		component: Layout,
-		redirect: '/fundManage/fundList',
-		meta: { icon: 'el-icon-s-shop', title: '资金管理' },
+		redirect: '/components/countTo',
+		meta: { icon: 'el-icon-s-management', title: '组件' },
 		children: [
 			{
-				path: 'fundList',
-				name: 'FundList',
-				component: () => import('@/views/fundManage/fundList'),
-				meta: { title: '资金流水' }
+				path: 'countTo',
+				name: 'CountTo',
+				component: () => import('@/views/countTo'),
+				meta: { title: '数字渐变' }
 			},
 			{
-				path: 'chinaTabsList',
-				name: 'ChinaTabsList',
-				component: () => import('@/views/fundManage/chinaTabsList'),
-				meta: { title: '区域投资' }
+				path: 'dragList',
+				name: 'dragList',
+				component: () => import('@/views/dragList'),
+				meta: { title: '拖拽列表' }
+			},
+			{
+				path: 'dragDrawer',
+				name: 'DragDrawer',
+				component: () => import('@/views/dragDrawer'),
+				meta: { title: '可拖动抽屉' }
+			},
+			{
+				path: 'orgTree',
+				name: 'OrgTree',
+				component: () => import('@/views/orgTree'),
+				meta: { title: '组织树结构' }
+			},
+			{
+				path: 'upload',
+				name: 'Upload',
+				component: () => import('@/views/upload'),
+				meta: { title: '文件上传' }
+			},
+			{
+				path: 'tables',
+				name: 'Tables',
+				component: () => import('@/views/tables'),
+				meta: { title: '多功能表格' }
+			},
+			{
+				path: 'splitPane',
+				name: 'SplitPane',
+				component: () => import('@/views/splitPane'),
+				meta: { title: '分割窗口' }
+			},
+			{
+				path: 'editor',
+				name: 'Editor',
+				component: () => import('@/views/editor'),
+				meta: { title: '富文本编辑器' }
 			}
 		]
 	}
@@ -124,27 +160,6 @@ export const asyncRoutes = [
 					title: '用户管理',
 					icon: 'el-icon-user-solid'
 				}
-			}
-		]
-	},
-	{
-		path: '/fundManage',
-		name: 'FundManage',
-		component: Layout,
-		redirect: '/fundManage/fundList',
-		meta: { icon: 'el-icon-s-shop', title: '资金管理' },
-		children: [
-			{
-				path: 'fundList',
-				name: 'FundList',
-				component: () => import('@/views/fundManage/fundList'),
-				meta: { title: '资金流水' }
-			},
-			{
-				path: 'chinaTabsList',
-				name: 'ChinaTabsList',
-				component: () => import('@/views/fundManage/chinaTabsList'),
-				meta: { title: '区域投资' }
 			}
 		]
 	}

@@ -1,7 +1,9 @@
 <template>
 	<div class="pagemain el-scrollbar" ref="pagemain">
 		<v-tag></v-tag>
-		<router-view></router-view>
+		<div class="mainWrapper">
+			<router-view></router-view>
+		</div>
 		<foot-nav></foot-nav>
 		<back-top :ele="$refs.pagemain"></back-top>
 	</div>

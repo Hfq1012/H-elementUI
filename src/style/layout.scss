@@ -33,8 +33,12 @@
 				margin-left: 200px;
 				transition: all 0.3s;
 				height: 100%;
-				& > div {
+				.mainWrapper {
 					padding: 30px;
+					margin-top: 30px;
+					margin-bottom: 78px;
+					background: white;
+					position: relative;
 				}
 			}
 		}
@@ -131,9 +135,15 @@
 			}
 		}
 		.tags {
-			padding: 0 !important;
+			position: fixed;
+			top: 50px;
+			right: 0;
+			left: 200px;
 			height: 30px;
 			box-shadow: 0 5px 10px #ddd;
+			transition: all 0.3s;
+			background: $white;
+			z-index: 98;
 			ul {
 				box-sizing: border-box;
 				width: 100%;
@@ -190,6 +200,10 @@
 				z-index: 10;
 			}
 		}
+		.footNav {
+			left: 200px;
+			transition: all 0.3s;
+		}
 	}
 }
 
@@ -235,13 +249,17 @@
 		.header_r {
 			margin-left: 64px !important;
 		}
+		.tags,.footNav {
+			left: 64px;
+			transition: all 0.3s;
+		}
 	}
 }
 
 .notificatBar {
 	position: fixed;
-	height: calc(100% - 50px);
-	bottom: 0;
+	height: calc(100% - 160px);
+	bottom: 78px;
 	right: 0;
 	width: 360px;
 	box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.2);
@@ -250,6 +268,9 @@
 }
 
 .footNav {
+	position: fixed;
+	right: 0;
+	bottom: 0;
 	padding: 0 !important;
 	background: $bg-black;
 	text-align: center;
